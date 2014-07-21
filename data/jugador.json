@@ -1,0 +1,11 @@
+{
+	"jugador": {
+		"sx": 0,
+		"sy": 0,
+		"tilew": 30,
+		"tileh": 30,
+		"frames": 13,
+		"cols": 4,
+		"rows":4
+	}
+}
