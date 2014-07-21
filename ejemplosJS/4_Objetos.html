@@ -20,18 +20,20 @@
             var gato = {
             	nombre: "Felix",
             	maulla: function(){
-            		document.write("miau miau");
+            		document.write("<p>miau miau</p>");
+            	},
+            	presentarse: function(){
+            		document.write("<p>Mi nombre " + this.nombre + "</p>");
             	}
             };
             
+            gato.maulla();
+            gato.presentarse();
             
-            //metodos y atributos
-
-            //JSON.stringify
-
-            //con llaves (2 casos)
-
-            //this
+            //se le pueden ir colocando atributos a los objetos
+            gato.raza = "Siames";
+            
+            document.write("<p>" + JSON.stringify(gato) + "</p>");
 
         </script>
     </head>
