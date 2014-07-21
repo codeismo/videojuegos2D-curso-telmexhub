@@ -5,13 +5,46 @@
         <meta charset="UTF-8"/>
         <script>
             //Funciones (el return y los argumentos son opcionales) 
-
+			function saludar(){
+				document.write("Buenas tardes");
+			}
             //llamando a la funcion
+            saludar();
             
             //Funciones anonimas (lambda)
+            //var r = 0;
+            
+            var sumar = function(a, b){
+            	//la r de afuera es visible aqui
+            	var r;
+            	r = a + b;
+            	return r;
+            };
+            var multiplicar = function(a, b){
+            	var r = a * b;
+            	return r;
+            };
+            
+            var resultado = sumar(3, 5);
+            //document.write("<p>Valor de r " + r + "</p>");
+            
             //Scope de una funcion (3 casos)
                       
             //Funcion ANONIMA como parametro de otra función
+            var operacion = function( unaFuncion ){
+            	var r = unaFuncion(8, 4);
+            	document.write("<p>El resultado es " + r + "</p>");
+            };
+            
+            operacion(sumar);
+            operacion(multiplicar);
+            var numero = 2;
+            sumar(2, 3);
+            
+            operacion(function(a, b){
+            	var r = a - b;
+            	return r;
+            });
 
             //Funcion AL VUELO como parametro de otra función
 
