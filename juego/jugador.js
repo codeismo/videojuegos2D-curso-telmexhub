@@ -11,5 +11,6 @@ Q.Sprite.extend("Jugador",{
 			jumpSpeed: -380,
 			speed:120
 		});
+		this.add("2d, platformerControls");
 	}
 });
