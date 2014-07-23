@@ -19,6 +19,14 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="107" name="mosaicos_enemigos_32x46" tilewidth="32" tileheight="46">
+  <image source="../images/mosaicos_enemigos_32x46.png" width="128" height="92"/>
+  <tile id="0">
+   <properties>
+    <property name="Class" value="TortugaVerde"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Background" width="60" height="13">
   <properties>
    <property name="type" value="0"/>
@@ -2387,5 +2395,7 @@
   <object gid="98" x="1045" y="312"/>
   <object gid="98" x="1696" y="296"/>
   <object gid="98" x="1328" y="301"/>
+  <object gid="107" x="212" y="298"/>
+  <object gid="107" x="798" y="266"/>
  </objectgroup>
 </map>

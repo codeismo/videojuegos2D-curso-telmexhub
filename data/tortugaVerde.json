@@ -1,0 +1,9 @@
+{
+	"tortugaVerde": {
+		"tilew": 32,
+		"tileh": 46,
+		"frames": 8,
+		"cols": 4,
+		"rows": 2
+	}
+}
