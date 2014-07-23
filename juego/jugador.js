@@ -12,6 +12,11 @@ Q.animations("animacionesMario",{
 		frames: [2],
 		rate: 1 / 2,
 		loop:false
+	},
+	quieto:{
+		frames: [1],
+		rate: 1 / 2,
+		loop: false
 	}
 });
 
@@ -48,6 +53,10 @@ Q.Sprite.extend("Jugador",{
 		//ejecutar la animacion saltar
 		if(this.p.vy < 0){
 			this.play("saltar");
+		}
+		//ejecutar animacion quieto
+		if(this.p.vy === 0 && this.p.vx === 0){
+			this.play("quieto");
 		}
 	}
 });
