@@ -6,4 +6,8 @@ Q.scene("mundo1", function(stage){
 	//confugurar escena (stage)
 	//cargar el archivo TMX
 	Q.stageTMX("mundo1_terminado.tmx",stage);
+
+	//La camara siga a Mario
+	stage.add("viewport").follow( Q("Jugador").first() );
+
 } );
