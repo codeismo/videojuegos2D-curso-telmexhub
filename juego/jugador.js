@@ -3,12 +3,16 @@
 Q.animations("animacionesMario",{
 	//caminar
 	caminar:{
-		frames: [2,4,8],
+		frames: [4,5,8],
 		//animacion de 6 frames por segundo
 		rate: 1 / 6,
 		loop: false
 	},
-	saltar:{}
+	saltar:{
+		frames: [2],
+		rate: 1 / 2,
+		loop:false
+	}
 });
 
 //D57
@@ -40,6 +44,10 @@ Q.Sprite.extend("Jugador",{
 		//ejecutar animacion de caminar
 		if(this.p.vx != 0){
 			this.play("caminar");
+		}
+		//ejecutar la animacion saltar
+		if(this.p.vy < 0){
+			this.play("saltar");
 		}
 	}
 });
