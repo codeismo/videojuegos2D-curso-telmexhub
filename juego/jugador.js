@@ -1,3 +1,16 @@
+//Definir animaciones: caminar, saltar
+//frames, velocidad de frame,
+Q.animations("animacionesMario",{
+	//caminar
+	caminar:{
+		frames: [2,4,8],
+		//animacion de 6 frames por segundo
+		rate: 1 / 6,
+		loop: false
+	},
+	saltar:{}
+});
+
 //D57
 //Definimos la clase Jugador que se extiende la clase Sprite
 //Sprite pertenece al core de Quintu
@@ -6,12 +19,13 @@
 Q.Sprite.extend("Jugador",{
 	init: function(p){
 		this._super(p,{
+			sprite: "animacionesMario",
 			sheet: "jugador",
 			frame: 1,
 			jumpSpeed: -800,
 			speed:150
 		});
-		this.add("2d, platformerControls");
+		this.add("2d, platformerControls, animation");
 	},
 	//esta funcion se repite continuamente (Game Loop)
 	step: function(){
@@ -22,6 +36,10 @@ Q.Sprite.extend("Jugador",{
 		//si el jugador va a la derecha y tecleo izquierda
 		if(this.p.direction == "right" && Q.inputs["left"]){
 			this.p.flip= "x";
+		}
+		//ejecutar animacion de caminar
+		if(this.p.vx != 0){
+			this.play("caminar");
 		}
 	}
 });

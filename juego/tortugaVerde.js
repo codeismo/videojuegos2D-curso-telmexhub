@@ -3,7 +3,7 @@ Q.Sprite.extend("TortugaVerde",{
 		this._super(p,{
 			sheet: "tortugaVerde",
 			frame: 0,
-			vx:170
+			vx:150
 		});
 		this.add("2d, aiBounce");
 	},
