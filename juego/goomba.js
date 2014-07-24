@@ -34,6 +34,8 @@ Q.Sprite.extend("Goomba", {
 	aplasta : function(colision) {
 		//revisar si colisione con Mario
 		if (colision.obj.isA("Jugador")) {
+			//hacemos que mario rebote
+			colision.obj.p.vy = -500;
 			//Goomba muere
 			this.play("aplastar");
 			//this.destroy();

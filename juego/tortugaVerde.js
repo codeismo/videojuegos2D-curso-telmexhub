@@ -5,7 +5,11 @@ Q.animations("animacionesTortugaVerde",{
 		rate: 1 / 2,
 		loop: true
 	},
-	enconchar: {}
+	enConchar: {
+		frames: [2, 4],
+		rate: 1 / 4,
+		loop: false
+	}
 });
 
 Q.Sprite.extend("TortugaVerde",{
@@ -24,7 +28,12 @@ Q.Sprite.extend("TortugaVerde",{
 	aConcha:function(colision){
 		//Detectar si es mario el que le cayó encima
 		if( colision.obj.isA("Jugador") ){
-			
+			//mario rebota
+			colision.obj.p.vy = -500;
+			//cambiar el sheet por el de enemigos bajos
+			this.sheet("enemigosBajos", true);
+			//ejecutar la animacion enconchar
+			this.play("enConchar");
 		}
 	},
 	step: function(){
