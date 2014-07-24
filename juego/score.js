@@ -10,6 +10,14 @@ Q.UI.Text.extend("PuntosGoomba",{
 			x: Q.width - 60,
 			size: 20
 		});
+		//escuchar el evento change.goombasMuertos
+		Q.state.on("change.goombasMuertos", this, "actualizaPuntaje");
+	},
+	
+	actualizaPuntaje: function(puntajeGoombas){
+		//actualiza el label
+		this.p.label = "" + puntajeGoombas;
+		alert("cambia variable goombasMuertos");
 	}
 });
 
