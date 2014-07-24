@@ -8,7 +8,8 @@ Q.UI.Text.extend("PuntosGoomba",{
 			color: "green",
 			y: 20,
 			x: Q.width - 60,
-			size: 20
+			size: 30,
+			family: 'Share Tech Mono'
 		});
 		//escuchar el evento change.goombasMuertos
 		Q.state.on("change.goombasMuertos", this, "actualizaPuntaje");
@@ -35,7 +36,8 @@ Q.scene("score", function(stage){
 		color: "brown",
 		y: 20,
 		x: Q.width - 160,
-		size: 20
+		size: 30,
+		family: 'Share Tech Mono'
 	});
 	//insertar el texto y el valor del puntaje en el stage
 	stage.insert(textoPuntaje);
