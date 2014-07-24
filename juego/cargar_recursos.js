@@ -13,4 +13,5 @@ Q.loadTMX(recursos, function(){
 	
 	//ejecutamos la escena
 	Q.stageScene("mundo1");
+	Q.stageScene("score",1);
 });

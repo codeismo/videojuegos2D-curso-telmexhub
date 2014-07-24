@@ -10,7 +10,7 @@ Q.setup("juego", {
 });
 
 //modulos a utilizar (6)
-Q.include("Sprites, Scenes, 2D, Input, Touch, TMX, Anim, Audio");
+Q.include("Sprites, Scenes, 2D, Input, Touch, TMX, Anim, Audio, UI");
 
 //activamos el sonido
 Q.enableSound();

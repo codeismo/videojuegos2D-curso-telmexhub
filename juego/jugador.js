@@ -52,6 +52,9 @@ Q.Sprite.extend("Jugador",{
 		}
 		//ejecutar la animacion saltar
 		if(this.p.vy < 0){
+			Q.audio.play("salto_enano.mp3",{
+				debounce: 1000
+			});
 			this.play("saltar");
 		}
 		//ejecutar animacion quieto
