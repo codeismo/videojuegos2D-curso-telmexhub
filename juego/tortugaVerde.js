@@ -18,7 +18,8 @@ Q.Sprite.extend("TortugaVerde",{
 			sprite: "animacionesTortugaVerde",
 			sheet: "tortugaVerde",
 			frame: 0,
-			vx:120
+			vx:120,
+			esConcha: false
 		});
 		this.add("2d, aiBounce, animation");
 		this.play("caminar");
@@ -30,8 +31,15 @@ Q.Sprite.extend("TortugaVerde",{
 		if( colision.obj.isA("Jugador") ){
 			//mario rebota
 			colision.obj.p.vy = -500;
-			//cambiar el sheet por el de enemigos bajos
-			this.sheet("enemigosBajos", true);
+			
+			//si la tortuga no es concha
+			if( !esConcha ){
+				//cambiar el sheet por el de enemigos bajos
+				this.sheet("enemigosBajos", true);
+				//activa la bandera esConcha
+				this.p.esConcha = true;
+			}
+			
 			//ejecutar la animacion enconchar
 			this.play("enConchar");
 		}
