@@ -7,7 +7,7 @@ Q.animations("animacionesGoomba", {
 	},
 	aplastar : {
 		frames : [3],
-		rate : 1 / 2,
+		rate : 1 / 4,
 		loop : false,
 		trigger : "destruir"
 	}
@@ -17,9 +17,9 @@ Q.Sprite.extend("Goomba", {
 	init : function(p) {
 		this._super(p, {
 			sprite : "animacionesGoomba",
-			sheet : "goomba",
+			sheet : "enemigosBajos",
 			frame : 0,
-			vx : 170
+			vx : 130
 		});
 		this.add("2d, aiBounce, animation");
 		//Ejecuta la animacion caminar siempre
