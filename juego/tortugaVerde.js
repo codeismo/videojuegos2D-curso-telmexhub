@@ -33,7 +33,7 @@ Q.Sprite.extend("TortugaVerde",{
 			colision.obj.p.vy = -500;
 			
 			//si la tortuga no es concha
-			if( !esConcha ){
+			if( !this.p.esConcha ){
 				//cambiar el sheet por el de enemigos bajos
 				this.sheet("enemigosBajos", true);
 				//activa la bandera esConcha
