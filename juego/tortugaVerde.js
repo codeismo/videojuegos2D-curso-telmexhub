@@ -40,6 +40,15 @@ Q.Sprite.extend("TortugaVerde",{
 				this.p.esConcha = true;
 			}
 			
+			//hacer que la tortuga se quede quieta cuando se esta moviendo
+			if(this.p.vx != 0){
+				this.p.vx = 0;
+			}else{
+			//hacer que la tortuga se mueva cuando esta quieta
+				this.p.vx = 500;
+			}
+			
+			
 			//ejecutar la animacion enconchar
 			this.play("enConchar");
 		}
