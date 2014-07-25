@@ -35,6 +35,21 @@ Q.Sprite.extend("Jugador",{
 			speed:150
 		});
 		this.add("2d, platformerControls, animation");
+		
+		//escuchamos si al mario le pegan por los costados
+		//o por la cabeza
+		this.on("bump.left, bump.right, bump.top",function(colision){
+			//esta funcion se ejecuta cuando se produce la colision
+			
+			//si el objeto con el que choco mario es un enemigo
+			//entonces mario debe morir!!
+			if(colision.obj.p.enemigo === true){
+			   	
+			   	Q.audio.play("mario_muere.mp3");
+			   	
+			}			
+		});
+		
 	},
 	//esta funcion se repite continuamente (Game Loop)
 	step: function(){

@@ -36,7 +36,16 @@ Q.scene("score", function(stage) {
 
 	//creamos un objeto de tipo PuntosGoomba y lo insertamos en la escena
 	var valorPuntaje = new Q.PuntosGoomba();
-
+	
+	
+	
+	//---------------------------------------------
+	//-----ESTAMOS EN RECESO DE 10 MIN :) ---------
+	//---------------------------------------------
+	
+	
+	
+	
 	//creando un elemento texto que diga "Goombas"
 	var textoPuntaje = new Q.UI.Text({
 		label : "Goombas: ",

@@ -19,7 +19,9 @@ Q.Sprite.extend("TortugaVerde",{
 			sheet: "tortugaVerde",
 			frame: 0,
 			vx:120,
-			esConcha: false
+			//DEFINIMOS NUESTRAS PROPIEDADES
+			esConcha: false,
+			enemigo:true
 		});
 		this.add("2d, aiBounce, animation");
 		this.play("caminar");
