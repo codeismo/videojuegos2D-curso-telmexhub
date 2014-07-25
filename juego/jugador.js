@@ -57,6 +57,30 @@ Q.Sprite.extend("Jugador", {
 				
 				//indicamos que mario ya esta muerto
 				this.p.estaVivo = false;
+				
+				//---- QUE TENDRIAN QUE CAMBIAR PARA QUE SOLO
+				//CON UNA FUNCION AUXILIAR Y USANDO UN BLOQUE forEach
+				//--- DESHABILITEN A TODOS LOS ENEMIGOS-----
+				
+				//DETENEMOS A TODOS LOS ENEMIGOS
+				//Q(NOMBRE) les regresa un arreglo javascript
+				//con todos los sprites que son de esa clase
+				//items son todos los goombas
+				Q("Goomba").items.forEach(function(enemigo){
+					//por cada goomba (enemigo)
+					//le quitamos su velocidad
+					enemigo.p.vx = 0;
+					//deshabilita las animaciones del sprite(enemigo)
+					enemigo.p.animation = null;					
+				});
+				
+				Q("TortugaVerde").items.forEach(function(enemigo){
+					//por cada goomba (enemigo)
+					//le quitamos su velocidad
+					enemigo.p.vx = 0;
+					//deshabilita las animaciones del sprite(enemigo)
+					enemigo.p.animation = null;					
+				});
 
 				//ejecutamos la animacion de que muere
 				this.play("muere");
