@@ -45,7 +45,11 @@ Q.Sprite.extend("Jugador",{
 			//entonces mario debe morir!!
 			if(colision.obj.p.enemigo === true){
 			   	
+			   	//deshabilita los controles de este jugador
+			   	this.p.ignoreControls = true;
+			   	
 			   	Q.audio.play("mario_muere.mp3");
+			   	
 			   	
 			}			
 		});
