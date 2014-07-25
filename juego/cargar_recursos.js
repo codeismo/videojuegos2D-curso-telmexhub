@@ -12,8 +12,12 @@ Q.load(recursos, function() {
 	Q.compileSheets("mosaicos_enemigos_32x46.png", "tortugaVerde.json");
 
 	//ejecutamos la escena
+	//cada invocan este metodo insertan una escena en su juego
+	//el primer que inserta es la escena 0
 	Q.stageScene("mundo1");
+	//inserta la segunda escena y le asigna el numero 0
 	Q.stageScene("score", 1);
+	
 }, {
 	progressCallback : function(leidos, totales) {
 
@@ -50,7 +54,15 @@ $("#boton-pausa").click(function() {
 	if (Q.pausado === true) {
 		
 		// unpause reanuda el juego
+		//con stage(0) es obtener la escena cuyo indice es 0
+		//que corresponde a la escena de los enemigos
 		Q.stage(0).unpause();
+		
+		//REANUDAMOS EL AUDIO
+		//EN  ESTE MOMENTO ES MUY DIFICIL
+		//EN QUINTUS hacer que una cancion siga desde el mmomento
+		//en que la pasaron
+		Q.audio.play("tema_superficie.mp3");
 		
 		Q.pausado = false;
 		esteBoton.html("Pausar");
@@ -61,6 +73,10 @@ $("#boton-pausa").click(function() {
 		
 		//pause, pausa el juego
 		Q.stage(0).pause();
+		
+		// A CONTINUCACION DETEMOS EL AUDIO
+		//SI QUIEREN TODO EL AUDIO
+		Q.audio.stop("tema_superficie.mp3");
 		
 		Q.pausado = true;
 		//el metodo html, cambia el contenido de una etiqueta
