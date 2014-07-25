@@ -21,7 +21,8 @@ Q.animations("animacionesMario", {
 	muere : {
 		frames : [12],
 		rate : 1 / 2,
-		loop : false
+		loop : false,
+		trigger:"casiMuerto"
 	}
 });
 
@@ -41,7 +42,46 @@ Q.Sprite.extend("Jugador", {
 			//DECLARAMOS NUESTRAS PROPIEDADES
 			estaVivo : true
 		});
-		this.add("2d, platformerControls, animation");
+		this.add("2d, platformerControls, animation, tween");
+		
+		//-- ESCUCHAMOS EL EVENTO casiMuerto, que detona el trigger
+		// de la animacion morir
+		this.on("casiMuerto",this,function(){
+			
+			//DESHABILITAMOS LA GRAVEDAD PARA ESTE SPRITE
+			this.del("2d");			
+			
+			//EJECTUAMOS ANIMACION TWEEN
+			
+			this.animate({
+				//mueve el sprite a la posicion y indicada
+				y:this.p.y - 100
+			},0.5,{
+				//esta funcion se ejecuta cuando ya haya 
+				//terminado la animacion tween que lleva al mario
+				//hacia arriba
+				callback:function(){
+					
+					//EJECUTAMOS OTRA ANIMACION TWEEN
+					//PARA SACAR A MARIO DEL ESCENARIO
+					this.animate({
+						//obtenemos la altura del juego(escenario)
+						//y animamos a  mario para que se vaya hasta el fondo
+						y:Q("TileLayer").first().p.h 
+					}, 0.5,{
+						//se ejecuta cuando ya terminamos de sacar a mario
+						//del escenario
+						callback:function(){
+							
+							//DESTRUIMOS AL JUGADOR
+							this.destroy();
+						}
+					});
+					
+				}
+			});
+			
+		});
 
 		//escuchamos si al mario le pegan por los costados
 		//o por la cabeza
@@ -84,7 +124,9 @@ Q.Sprite.extend("Jugador", {
 
 				//ejecutamos la animacion de que muere
 				this.play("muere");
-
+				
+				//DETENEMOS TODOS LOS AUDIOS DEL JUEGO
+				Q.audio.stop();
 				Q.audio.play("mario_muere.mp3");
 
 			}
