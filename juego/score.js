@@ -43,4 +43,43 @@ Q.scene("score", function(stage){
 	stage.insert(textoPuntaje);
 	stage.insert(valorPuntaje);
 	
+	//insertamos el timer del juego
+	//ESTAMOS INSTANCIANDO LA CLASE ContadorTiempo
+	var contadorTiempo = new Q.ContadorTiempo();
+	//insertamos el contador en el stage
+	stage.insert(contadorTiempo);
+	
 });
+
+
+
+
+
+
+
+
+// -------------- LOGICA DEL TIMER DEL JUEGO -------------
+
+Q.UI.Text.extend("ContadorTiempo",{
+	init: function(p){
+		this._super(p,{
+			label: "0",
+			color: "green",
+			y: 20,
+			//Q.width les da el ancho del canvas
+			x: Q.width/2, //colocando el timer en medio del juego
+			size: 30,
+			family: 'Share Tech Mono'
+		});
+		
+	}
+});
+
+
+
+
+
+
+
+
+
