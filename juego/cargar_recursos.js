@@ -1,7 +1,7 @@
 //D66
 //indicar en una cadena los recursos: audios, imagenes, tmx, json
 //callback para configurar los sprites
-var recursos = "bump.ogg, patada.mp3, salto_enano.mp3, tema_superficie.mp3, jugador.json, mundo1_terminado.tmx, mosaicos_escenario_32x32.png, mosaicos_mario_enano_30x30.png, enemigosBajos.json, mosaicos_enemigos_32x32.png, tortugaVerde.json, mosaicos_enemigos_32x46.png";
+var recursos = "pausa.mp3,bump.ogg, patada.mp3, salto_enano.mp3, tema_superficie.mp3, jugador.json, mundo1_terminado.tmx, mosaicos_escenario_32x32.png, mosaicos_mario_enano_30x30.png, enemigosBajos.json, mosaicos_enemigos_32x32.png, tortugaVerde.json, mosaicos_enemigos_32x46.png";
 
 Q.load(recursos, function() {
 	//se ejecuta hasta que los recursos estén listos
@@ -45,9 +45,13 @@ Q.pausado = false;
 $("#boton-pausa").click(function() {
 	//aqui va el codigo que queremos que se ejecute
 	//cuando alguien le da click al boton
-
+	
+	//SOLUCION BREVE EJERCICIO
+	Q.audio.play("pausa.mp3");
+	
 	//this en este caso se refiere al boton que genero click
 	var esteBoton = $(this);
+	
 
 	//SI EL JUEGO ESTA PAUSADO y el usuario presiona el boton
 	//REANUDAMOS EL JUEGO
