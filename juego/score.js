@@ -27,6 +27,13 @@ Q.scene("score", function(stage){
 	//creamos una variable del Game State
 	Q.state.set("goombasMuertos", 0);
 	
+	//declaramos otra variable de estado
+	//las variables de estado estan asociadas con el juego
+	//su juego esta representado con el objeto Q
+	//utilizamos este metodo POR QUE LAS VARIABLES GLOBALES
+	//DE JAVASCRIPT SON INHERENTEMENTE MALVADAS
+	Q.state.set("tiempo",10);
+	
 	//creamos un objeto de tipo PuntosGoomba y lo insertamos en la escena
 	var valorPuntaje = new Q.PuntosGoomba();
 	
@@ -49,6 +56,16 @@ Q.scene("score", function(stage){
 	//insertamos el contador en el stage
 	stage.insert(contadorTiempo);
 	
+	//VAMOS A DEFINIR UN SETINTERVAL PARA QUE DECREMENTE CADA
+	//SEGUNDO EL CONTADOR DEL TIEMPO
+	// primer argumento: ES LA FUNCION QUE SE EJECUTA EN UN PERIODO DE TIEMPO
+	// segundo argumento: ES EL PERIODO EN EL QUE EJECUT LA FUNCION
+	setInterval(function(){
+		//toma la variable tiempo y la decrementa en una unidad
+		Q.state.dec("tiempo",1);
+	},1000);
+	
+		
 });
 
 
@@ -63,7 +80,7 @@ Q.scene("score", function(stage){
 Q.UI.Text.extend("ContadorTiempo",{
 	init: function(p){
 		this._super(p,{
-			label: "0",
+			label: "10",
 			color: "green",
 			y: 20,
 			//Q.width les da el ancho del canvas
@@ -72,7 +89,21 @@ Q.UI.Text.extend("ContadorTiempo",{
 			family: 'Share Tech Mono'
 		});
 		
+		//EN GENERAL EN QUINTUS, el metodo on
+		//les permite escuchar eventos
+		//el evento change.tiempo se produce cuando alquien
+		//invoca Q.state.dec o Q.state.inc
+		Q.state.on("change.tiempo",this,"actualizarTiempo");		
+	},
+	//-- esta funcion se ejecuta cuando alguien cambia la variable
+	//de estado tiempo, y ademas a la funcion se le pasa como argumento
+	//el valor nuevo de esa variable de estado
+	actualizarTiempo:function(tiempo){
+		console.log("tiempo");
+		//actualizamos el texto del timer
+		this.p.label = "" + tiempo;
 	}
+	
 });
 
 
