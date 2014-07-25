@@ -31,6 +31,12 @@ Q.load(recursos, function() {
 			//obtenemos el objeto asociado a la etiqueta
 			//cuyo id es #contenedor-barra y los destruimos
 			$("#contenedor-barra").remove();
+			
+			//OBTENEMOS EL BOTON DE PAUSA CON jQuery
+			//show es un metodo de jquery que permite mostrar
+			//items ocultos
+			$("#contenedor-boton").show();
+			
 		}
 
 	}

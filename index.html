@@ -1,53 +1,63 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>HTML5 Game</title>
-        <!-- importar una fuente de Google Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Share+Tech+Mono' rel='stylesheet' type='text/css'>
-        <!-- Importando librerías localmente -->
-       
-        <script src="lib/jquery-1.11.1.min.js"></script>        
-        <script src="lib/quintus.js"></script>
-        <script src="lib/quintus_2d.js"></script>
-        <script src="lib/quintus_anim.js"></script>
-        <script src="lib/quintus_audio.js"></script>
-        <script src="lib/quintus_input.js"></script>
-        <script src="lib/quintus_scenes.js"></script>
-        <script src="lib/quintus_sprites.js"></script>
-        <script src="lib/quintus_tmx.js"></script>
-        <script src="lib/quintus_touch.js"></script>
-        <script src="lib/quintus_ui.js"></script>
-        <!-- Importando desde un CDN -->
-        <!--
-        <script src='http://cdn.html5quintus.com/v0.2.0/quintus-all.js'></script>
-        -->
-        <style>
-        
-             /* selector de CSS (SELECTOR DE ID)*/
-        	#barra{
-        		background-color:red;
-        		height:70px;
-        		width:30%;
-        	}
-        </style>
-    </head>
-    <body>
-    	<div id="contenedor-barra">
-    		<h1>Loading...</h1>
-    		<div id="barra"></div>
-    	</div>
-    	
-    	<div>
-    		<button id="boton-pausa">Pausar</button>
-    	</div>
-    	
-        <canvas width="800px" height="400px" id="juego"></canvas>
-        <script src="juego/inicializar.js"></script>
-        <script src="juego/jugador.js"></script>
-        <script src="juego/goomba.js"></script>
-        <script src="juego/tortugaVerde.js"></script>
-        <script src="juego/escena.js"></script>
-        <script src="juego/score.js"></script>
-        <script src="juego/cargar_recursos.js"></script>
-    </body>
+	<head>
+		<title>HTML5 Game</title>
+		<!-- importar una fuente de Google Fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Share+Tech+Mono' rel='stylesheet' type='text/css'>
+		<!-- Importando librerías localmente -->
+
+		<script src="lib/jquery-1.11.1.min.js"></script>
+		<script src="lib/quintus.js"></script>
+		<script src="lib/quintus_2d.js"></script>
+		<script src="lib/quintus_anim.js"></script>
+		<script src="lib/quintus_audio.js"></script>
+		<script src="lib/quintus_input.js"></script>
+		<script src="lib/quintus_scenes.js"></script>
+		<script src="lib/quintus_sprites.js"></script>
+		<script src="lib/quintus_tmx.js"></script>
+		<script src="lib/quintus_touch.js"></script>
+		<script src="lib/quintus_ui.js"></script>
+		<!-- Importando desde un CDN -->
+		<!--
+		<script src='http://cdn.html5quintus.com/v0.2.0/quintus-all.js'></script>
+		-->
+		<style>
+			/* selector de CSS (SELECTOR DE ID)*/
+			#barra {
+				background-color: red;
+				height: 70px;
+				width: 30%;
+			}
+
+			/* recordatorio: #NOMBRE es un selector de CSS DE ID
+			 */
+			#contenedor-boton {
+				/* OCULTA AL ELEMENTO QUE SELECCIONA ESTE SELECTOR DE Id*/
+				display: none;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id="contenedor-barra">
+			<h1>Loading...</h1>
+			<div id="barra"></div>
+		</div>
+
+		<div id="contenedor-boton">
+			<button id="boton-pausa">
+				Pausar
+			</button>
+		</div>
+
+		<canvas width="800px" height="400px" id="juego"></canvas>
+		<script src="juego/inicializar.js"></script>
+		<script src="juego/jugador.js"></script>
+		<script src="juego/goomba.js"></script>
+		<script src="juego/tortugaVerde.js"></script>
+		<script src="juego/escena.js"></script>
+		<script src="juego/score.js"></script>
+		<script src="juego/cargar_recursos.js"></script>
+	</body>
 </html>
