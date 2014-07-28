@@ -48,7 +48,8 @@ Q.Sprite.extend("Jugador", {
 		this.on( "bump.bottom", function(colision){
 			//revisar si colsione con una TuberiaEntrada y su pulse flecha abajo
 			if( colision.obj.isA("TuberiaEntrada") && Q.inputs["down"] ){
-				//llamar a la escena del subterranea	
+				//llamar a la escena del subterranea
+				Q.stageScene("mundo1Subterraneo", 2);	
 			}
 		} );
 		
