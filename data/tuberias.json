@@ -1,0 +1,9 @@
+{
+	"tuberias": {
+		"tilew": 64,
+		"tileh": 64,
+		"frames": 9,
+		"cols": 3,
+		"rows":3
+	}
+}
