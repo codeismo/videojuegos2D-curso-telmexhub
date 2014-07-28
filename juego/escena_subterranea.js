@@ -3,7 +3,15 @@
 //se carga el mapa
 
 Q.scene("mundo1Subterraneo", function(stage){
-	//confugurar escena (stage)
+	//Pausar y ocultar las escenas de score y de mundo1
+	//obtener a Mario
+	var mario = Q("Jugador",0).first();
+	//obtener la escena previa
+	var escenaPrevia = mario.stage;
+	//pausar y ocultar la escena previa
+	escenaPrevia.stop();
+	
+	
 	//cargar el archivo TMX
 	Q.stageTMX("mundo1_subway.tmx",stage);
 
