@@ -15,6 +15,12 @@ Q.scene("mundo1Subterraneo", function(stage){
 	//cargar el archivo TMX
 	Q.stageTMX("mundo1_subway.tmx",stage);
 
+	//insertar a Mario
+	mario.p.x = 70;
+	mario.p.y = 0;
+	
+	stage.insert(mario);
+	
 	Q.audio.play("subterraneo.mp3", {
 		loop: true
 	});
