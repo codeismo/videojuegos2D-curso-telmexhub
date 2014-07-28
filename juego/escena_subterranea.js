@@ -8,6 +8,8 @@ Q.scene("mundo1Subterraneo", function(stage){
 	var mario = Q("Jugador",0).first();
 	//obtener la escena previa
 	var escenaPrevia = mario.stage;
+	//pegar a mario un atributo que haga referefencia a la escena del mundo 1
+	mario.p.escena_previa = escenaPrevia;
 	//pausar y ocultar la escena previa
 	escenaPrevia.stop();
 	
