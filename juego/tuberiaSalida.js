@@ -1,8 +1,8 @@
-Q.Sprite.extend("TuberiaEntrada", {
+Q.Sprite.extend("TuberiaSalida", {
 	init : function(p) {
 		this._super(p, {
 			sheet : "tuberias",
-			frame : 2
+			frame : 6
 		});
 		this.add("2d");
 	}	
