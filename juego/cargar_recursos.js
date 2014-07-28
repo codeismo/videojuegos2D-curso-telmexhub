@@ -10,7 +10,8 @@ Q.load(recursos, function() {
 	//Los Sprites de las imagenes de Goomba se compilan con  goomba.json
 	Q.compileSheets("mosaicos_enemigos_32x32.png", "enemigosBajos.json");
 	Q.compileSheets("mosaicos_enemigos_32x46.png", "tortugaVerde.json");
-
+	//compilar Sprites para las tuberias
+	Q.compileSheets("tuberias.png", "tuberias.json");
 	//ejecutamos la escena
 	//cada invocan este metodo insertan una escena en su juego
 	//el primer que inserta es la escena 0
