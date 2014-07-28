@@ -44,6 +44,14 @@ Q.Sprite.extend("Jugador", {
 		});
 		this.add("2d, platformerControls, animation, tween");
 		
+		//escucho cuando colisiono por abajo con la tuberia
+		this.on( "bump.bottom", function(colision){
+			//revisar si colsione con una TuberiaEntrada y su pulse flecha abajo
+			if( colision.obj.isA("TuberiaEntrada") && Q.inputs["down"] ){
+				//llamar a la escena del subterranea	
+			}
+		} );
+		
 		//-- ESCUCHAMOS EL EVENTO casiMuerto, que detona el trigger
 		// de la animacion morir
 		this.on("casiMuerto",this,function(){
