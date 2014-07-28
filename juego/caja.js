@@ -11,6 +11,33 @@ Q.animations("animacionCaja",{
 	}
 });
 
+
+Q.Sprite.extend("HongoVida", {
+	init : function(p) {
+		this._super(p, {			
+			sheet : "objetos",
+			frame : 1,
+			vx:150,
+			//deshabilitamos temporalmente las colisiones
+			sensor:true
+		});
+		this.add("animation,tween,aiBounce");
+		
+		//hit es para escuchar cualquier colision
+		this.on("hit",function(colision){
+			
+			//si el objeto que le pego al hongo es el jugador
+			if(colision.obj.isA("Jugador")){
+				//destruir a este hongo
+				this.destroy();			
+			}			
+		});		
+	}	
+});
+
+
+
+
 Q.Sprite.extend("Caja", {
 	init : function(p) {
 		this._super(p, {
@@ -26,8 +53,25 @@ Q.Sprite.extend("Caja", {
 		
 		this.on("bump.bottom",function(colision){
 			
-			if(colision.obj.isA("Jugador")){
+			if(colision.obj.isA("Jugador")){				
 				this.play("apagado");
+				
+				//insertamos al hongo de vida EN EL ESCENARIO
+				var hongo = new Q.HongoVida({
+					//this.p.x = es la cordenada en x de la caja
+					x:this.p.x,
+					y:this.p.y
+				});
+				
+				//this.stage == AL ESCENARIO EN QUE VIVE ESTE OBJETO
+				this.stage.insert(hongo);
+				
+				//UNA VEZ QUE INSERTAMOS AL HONGO, HACEMOS UNA ANIMACION TWEEN						
+				hongo.animate({
+					//anima este hongo en la cordenada y de la caja
+					y:this.p.y - 35
+				},0.5);
+					
 			}
 			
 		});
