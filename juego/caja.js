@@ -36,8 +36,6 @@ Q.Sprite.extend("HongoVida", {
 });
 
 
-
-
 Q.Sprite.extend("Caja", {
 	init : function(p) {
 		this._super(p, {
@@ -70,7 +68,16 @@ Q.Sprite.extend("Caja", {
 				hongo.animate({
 					//anima este hongo en la cordenada y de la caja
 					y:this.p.y - 35
-				},0.5);
+				},0.5,{
+					//ejecutamos esta funcion una vez que el hongo salio por completo
+					//de su caja
+					callback:function(){
+						//regresamos al hongo el modulo 2d para detectar colisones
+						//deshabilitamos la propiedad sensor
+						this.p.sensor = false;
+						this.add("2d");
+					}
+				});
 					
 			}
 			
