@@ -27,6 +27,14 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="115" name="tuberias" tilewidth="64" tileheight="64">
+  <image source="../images/tuberias.png" width="192" height="192"/>
+  <tile id="2">
+   <properties>
+    <property name="Class" value="TuberiaEntrada"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Background" width="60" height="13">
   <properties>
    <property name="type" value="0"/>
@@ -2164,8 +2172,8 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="64"/>
-   <tile gid="65"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2224,8 +2232,8 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="73"/>
-   <tile gid="74"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2397,5 +2405,6 @@
   <object gid="98" x="1328" y="301"/>
   <object gid="107" x="212" y="298"/>
   <object gid="107" x="695" y="311"/>
+  <object gid="117" x="559" y="352"/>
  </objectgroup>
 </map>
