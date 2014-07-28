@@ -35,6 +35,14 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="124" name="mosaicos_objetos" tilewidth="32" tileheight="32">
+  <image source="../images/mosaicos_objetos.png" width="96" height="64"/>
+  <tile id="3">
+   <properties>
+    <property name="Class" value="Caja"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Background" width="60" height="13">
   <properties>
    <property name="type" value="0"/>
@@ -2047,7 +2055,7 @@
    <tile gid="63"/>
    <tile gid="63"/>
    <tile gid="63"/>
-   <tile gid="63"/>
+   <tile gid="0"/>
    <tile gid="63"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2406,5 +2414,6 @@
   <object gid="107" x="212" y="298"/>
   <object gid="107" x="695" y="311"/>
   <object gid="117" x="559" y="352"/>
+  <object gid="127" x="416" y="256"/>
  </objectgroup>
 </map>
