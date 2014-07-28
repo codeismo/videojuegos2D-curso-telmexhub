@@ -69,6 +69,10 @@ Q.Sprite.extend("Jugador", {
 				this.p.x = 1000;
 				this.p.y = 0;
 				
+				/*--------------------------------------------------------------*/
+				/*--------------- ESTAMOS EN RECESO DE 10 MIN ------------------*/
+				/*--------------------------------------------------------------*/
+				
 				//el atributo stage de mario debe ser el mundo1
 				this.stage = this.p.escena_previa;
 			}
