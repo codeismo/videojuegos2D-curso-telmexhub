@@ -19,7 +19,8 @@ Q.Sprite.extend("HongoVida", {
 			frame : 1,
 			vx:150,
 			//deshabilitamos temporalmente las colisiones
-			sensor:true
+			sensor:true,
+			z:1
 		});
 		this.add("animation,tween,aiBounce");
 		
@@ -43,7 +44,9 @@ Q.Sprite.extend("Caja", {
 			sheet : "objetos",
 			frame : 3,
 			//DESHABILITAMOS LA GRAVEDAD			
-			gravity:0
+			gravity:0,
+			// z es mayor se pone encima de los objetos que tienen un valor de z menor
+			z:10
 		});
 		this.add("2d,animation");
 		

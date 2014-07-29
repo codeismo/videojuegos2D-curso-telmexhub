@@ -21,7 +21,10 @@ Q.load(recursos, function() {
 	//ejecutamos la escena
 	//cada invocan este metodo insertan una escena en su juego
 	//el primer que inserta es la escena 0
-	Q.stageScene("mundo1");
+	Q.stageScene("mundo1",{
+		//sort = HABILITA EL ORDENAMIENTO CON LA PROPIEDAD Z
+		sort:true
+	});
 	//inserta la segunda escena y le asigna el numero 0
 	Q.stageScene("score", 1);
 	

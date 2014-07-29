@@ -49,7 +49,8 @@ Q.Sprite.extend("TortugaVerde",{
 			vx:120,
 			//DEFINIMOS NUESTRAS PROPIEDADES
 			esConcha: false,
-			enemigo:true
+			enemigo:true,
+			z:1
 		});
 		
 		//agregamos nuestro componente saltarin

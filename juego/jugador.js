@@ -40,7 +40,8 @@ Q.Sprite.extend("Jugador", {
 			jumpSpeed : -800,
 			speed : 150,
 			//DECLARAMOS NUESTRAS PROPIEDADES
-			estaVivo : true
+			estaVivo : true,
+			z:1
 		});
 		this.add("2d, platformerControls, animation, tween");
 		
