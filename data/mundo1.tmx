@@ -2425,7 +2425,6 @@
   </data>
  </layer>
  <objectgroup name="Sprites" width="60" height="13">
-  <object gid="83" x="62" y="39"/>
   <object gid="98" x="354" y="201"/>
   <object gid="98" x="777" y="335"/>
   <object gid="98" x="1045" y="312"/>

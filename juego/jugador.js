@@ -100,33 +100,14 @@ Q.Sprite.extend("Jugador", {
 						this.p.escena_previa.start();
 
 						//el atributo stage de mario debe ser el mundo1
-						this.stage = this.p.escena_previa;
+						//this.stage = this.p.escena_previa;
 
-						//asignar coordenadas de acuerdo a la tuberia de regreso
-						var tuberia = Q("TuberiaRegreso", 0).first();
-
-						this.p.x = tuberia.p.x;
-						this.p.y = tuberia.p.y;
-
-						//UNA VEZ QUE INSERTAMOS AL HONGO, HACEMOS UNA ANIMACION TWEEN
-						this.animate({
-							//anima a mario en la cordenada y de la tuberia
-							y : this.p.y - this.p.h - tuberia.p.h
-						}, 0.5, {
-							//ejecutamos esta funcion una vez que el hongo salio por completo
-							//de su caja
-							callback : function() {
-								//regresamos al hongo el modulo 2d para detectar colisones
-								//deshabilitamos la propiedad sensor
-								this.p.sensor = false;
-								this.add("2d");
-								//dar play al audio del mundo 1
-								Q.audio.play("tema_superficie.mp3", {
-									loop : true
-								});
-							}
+						Q.stageScene("mundo1", {
+							propiedadesMario : this.p
 						});
-
+						
+						//destruimos este mario y su escena
+						this.stage.destroy();
 					}
 				});
 			}

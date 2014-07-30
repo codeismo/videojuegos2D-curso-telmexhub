@@ -6,10 +6,16 @@ Q.scene("mundo1Subterraneo", function(stage){
 	//Pausar y ocultar las escenas de score y de mundo1
 	//obtener a Mario
 	var mario = Q("Jugador",0).first();
+	var marioPropiedades = mario.p;
+	
 	//obtener la escena previa
 	var escenaPrevia = mario.stage;
 	//pegar a mario un atributo que haga referefencia a la escena del mundo 1
-	mario.p.escena_previa = escenaPrevia;
+	marioPropiedades.escena_previa = escenaPrevia;
+	
+	//destruimos al mario que vive en la escena previa
+	mario.destroy();
+	
 	//pausar y ocultar la escena previa
 	escenaPrevia.stop();
 	
@@ -21,6 +27,10 @@ Q.scene("mundo1Subterraneo", function(stage){
 	mario.p.x = 100;
 	mario.p.y = 40;
 	
+	//creamos un nuevo mario para esta escena
+	mario = new Q.Jugador(marioPropiedades);
+	
+	//insertamos el mario recien creado
 	stage.insert(mario);
 	//obtener mi capa de fondo
 	var capaFondo = Q("TileLayer",2).first();
