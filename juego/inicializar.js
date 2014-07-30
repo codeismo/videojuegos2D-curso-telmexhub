@@ -24,7 +24,7 @@ Q.touch();
 
 Q.pausarEnemigos = function() {
 
-	var enemigosClases = ["Goomba", "TortugaVerde"];
+	var enemigosClases = ["Goomba", "TortugaVerde","TortugaCafe","TortugaVerdeAlada","TortugaCafeAlada"];
 
 	//iteramos todas las cadenas (nombre de clases de enemigos) del arreglo enemigosClases
 	enemigosClases.forEach(function(enemigoClase) {
