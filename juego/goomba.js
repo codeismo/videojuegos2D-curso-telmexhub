@@ -33,7 +33,7 @@ Q.Sprite.extend("Goomba", {
 		this.on("destruir", function() {
 			this.destroy();
 			//incrementa el numero de Goombas muertos
-			Q.state.inc("goombasMuertos", 1);
+			Q.state.inc("goombasMuertos", 10);
 		});
 	},
 	aplasta : function(colision) {

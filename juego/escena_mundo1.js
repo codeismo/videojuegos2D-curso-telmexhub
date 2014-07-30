@@ -5,7 +5,7 @@
 Q.scene("mundo1", function(stage){
 	//confugurar escena (stage)
 	//cargar el archivo TMX
-	Q.stageTMX("mundo1_terminado.tmx",stage);
+	Q.stageTMX("mundo1.tmx",stage);
 	
 	//obtener mi capa de fondo
 	var capaFondo = Q("TileLayer").first();
@@ -22,9 +22,9 @@ Q.scene("mundo1", function(stage){
 		minY: 0,
 		maxY: capaFondo.p.h
 	} );
-	
+	/*
 	Q.audio.play("tema_superficie.mp3", {
 		loop: true
-	});
+	});*/
 
 } );

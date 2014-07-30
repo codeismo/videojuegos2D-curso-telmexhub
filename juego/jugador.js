@@ -37,7 +37,7 @@ Q.Sprite.extend("Jugador", {
 			sprite : "animacionesMario",
 			sheet : "jugador",
 			frame : 1,
-			jumpSpeed : -800,
+			jumpSpeed : -600,
 			speed : 150,
 			//DECLARAMOS NUESTRAS PROPIEDADES
 			estaVivo : true,
@@ -69,11 +69,7 @@ Q.Sprite.extend("Jugador", {
 				//asignar coordenadas aleatorias
 				this.p.x = 1000;
 				this.p.y = 0;
-				
-				/*--------------------------------------------------------------*/
-				/*--------------- ESTAMOS EN RECESO DE 10 MIN ------------------*/
-				/*--------------------------------------------------------------*/
-				
+
 				//el atributo stage de mario debe ser el mundo1
 				this.stage = this.p.escena_previa;
 			}

@@ -1,9 +1,0 @@
-{
-	"goomba": {
-		"tilew": 32,
-		"tileh": 32,
-		"frames": 7,
-		"cols": 3,
-		"rows": 3
-	}
-}

@@ -3,13 +3,12 @@
 //El objeto texto puede escuchar eventos
 Q.UI.Text.extend("PuntosGoomba", {
 	init : function(p) {
+
 		this._super(p, {
 			label : "0",
-			color : "green",
-			y : 20,
-			x : Q.width - 60,
-			size : 30,
-			family : 'Share Tech Mono'
+			color : "white",
+			size : 15,
+			family : 'Press Start'
 		});
 		//escuchar el evento change.goombasMuertos
 		Q.state.on("change.goombasMuertos", this, "actualizaPuntaje");
@@ -18,7 +17,6 @@ Q.UI.Text.extend("PuntosGoomba", {
 	actualizaPuntaje : function(puntajeGoombas) {
 		//actualiza el label
 		this.p.label = "" + puntajeGoombas;
-		alert("cambia variable goombasMuertos");
 	}
 });
 
@@ -32,28 +30,22 @@ Q.scene("score", function(stage) {
 	//su juego esta representado con el objeto Q
 	//utilizamos este metodo POR QUE LAS VARIABLES GLOBALES
 	//DE JAVASCRIPT SON INHERENTEMENTE MALVADAS
-	Q.state.set("tiempo", 10);
+	Q.state.set("tiempo", 300);
 
 	//creamos un objeto de tipo PuntosGoomba y lo insertamos en la escena
-	var valorPuntaje = new Q.PuntosGoomba();
-	
-	
-	
-	//---------------------------------------------
-	//-----ESTAMOS EN RECESO DE 10 MIN :) ---------
-	//---------------------------------------------
-	
-	
-	
-	
-	//creando un elemento texto que diga "Goombas"
+	var valorPuntaje = new Q.PuntosGoomba({
+		x : Q.width - 500,
+		y : 40
+	});
+
+	//creando un elemento texto que diga "Puntaje"
 	var textoPuntaje = new Q.UI.Text({
-		label : "Goombas: ",
-		color : "brown",
+		label : "Puntaje",
+		color : "white",
 		y : 20,
-		x : Q.width - 160,
-		size : 30,
-		family : 'Share Tech Mono'
+		x : Q.width - 500,
+		size : 15,
+		family : 'Press Start'
 	});
 	//insertar el texto y el valor del puntaje en el stage
 	stage.insert(textoPuntaje);
@@ -61,19 +53,34 @@ Q.scene("score", function(stage) {
 
 	//insertamos el timer del juego
 	//ESTAMOS INSTANCIANDO LA CLASE ContadorTiempo
-	var contadorTiempo = new Q.ContadorTiempo();
+	var contadorTiempo = new Q.ContadorTiempo({
+		y : 40,
+		x : Q.width - 200,
+	});
+
+	//creando un elemento texto que diga "Tiempo"
+	var textoTiempo = new Q.UI.Text({
+		label : "Tiempo",
+		color : "white",
+		y : 20,
+		x : Q.width - 200,
+		size : 15,
+		family : 'Press Start'
+	});
+
 	//insertamos el contador en el stage
 	stage.insert(contadorTiempo);
+	stage.insert(textoTiempo);
 
 	//VAMOS A DEFINIR UN SETINTERVAL PARA QUE DECREMENTE CADA
 	//SEGUNDO EL CONTADOR DEL TIEMPO
 	// primer argumento: ES LA FUNCION QUE SE EJECUTA EN UN PERIODO DE TIEMPO
 	// segundo argumento: ES EL PERIODO EN EL QUE EJECUT LA FUNCION
 	setInterval(function() {
-		
+
 		//obtiene el valor de la variable tiempo asociada al estado
 		var tiempo = Q.state.get("tiempo");
-		
+
 		//si el tiempo del juego es mayor que 0
 		// Y  SI EL JUEGO NO ESTA PAUSADO DECREMENTAMOS EL TIMER
 		if (tiempo > 0 && Q.pausado === false) {
@@ -90,13 +97,10 @@ Q.scene("score", function(stage) {
 Q.UI.Text.extend("ContadorTiempo", {
 	init : function(p) {
 		this._super(p, {
-			label : "10",
-			color : "green",
-			y : 20,
-			//Q.width les da el ancho del canvas
-			x : Q.width / 2, //colocando el timer en medio del juego
-			size : 30,
-			family : 'Share Tech Mono'
+			label : "100",
+			color : "white",
+			size : 15,
+			family : 'Press Start'
 		});
 
 		//EN GENERAL EN QUINTUS, el metodo on
