@@ -91,6 +91,7 @@ Q.Sprite.extend("Jugador", {
 		this.on("casiMuerto", this, function() {
 
 			//DESHABILITAMOS LA GRAVEDAD PARA ESTE SPRITE
+			this.p.sensor = true;
 			this.del("2d");
 
 			//EJECTUAMOS ANIMACION TWEEN
