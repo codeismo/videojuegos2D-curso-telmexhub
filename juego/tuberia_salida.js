@@ -1,10 +1,9 @@
-Q.Sprite.extend("TuberiaSalida", {
+//tuberia del subterraneo para regresar al mundo1
+
+Q.Tuberia.extend("TuberiaSalida", {
 	init : function(p) {
-		this._super(p, {
-			sheet : "tuberias",
-			frame : 6,
-			z:1
-		});
-		this.add("2d");
-	}	
+		this._super(Q._extend(p, {
+			frame : 6
+		}));
+	}
 });

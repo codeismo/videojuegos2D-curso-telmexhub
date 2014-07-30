@@ -51,7 +51,7 @@ Q.Sprite.extend("Jugador", {
 		//escucho cuando colisiono por abajo con la tuberia de entrada
 		this.on("bump.bottom", function(colision) {
 			//revisar si colsione con una TuberiaEntrada y su pulse flecha abajo
-			if (colision.obj.isA("TuberiaEntrada") && Q.inputs["down"]) {
+			if (colision.obj.isA("Tuberia") && Q.inputs["down"]) {
 				//llamar a la escena del subterranea
 				Q.audio.stop("tema_superficie.mp3");
 				Q.stageScene("mundo1Subterraneo", 2);

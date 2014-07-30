@@ -1,4 +1,6 @@
-Q.Sprite.extend("TuberiaEntrada", {
+//tuberia del mundo1 para entrar y regresar del subterraneo
+
+Q.Sprite.extend("Tuberia", {
 	init : function(p) {
 		this._super(p, {
 			sheet : "tuberias",
