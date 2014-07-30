@@ -16,16 +16,18 @@ Q.Sprite.extend("TortugaVerde", {
 	init : function(p) {
 		this._super(p, {
 			sprite : "animacionesTortugaVerde",
-			sheet : "tortugas",
-			frame : 0,
+			sheet : "tortugas",			
 			vx : 120,
 			//DEFINIMOS NUESTRAS PROPIEDADES
+			frameMorir : 4,//usamos este frame para el componente morirDeCabeza
+			mosaicosMorir:"enemigosBajos",//usamos esta prop para el componente morirDeCabeza
 			esConcha : false,
+			vivo : true,
 			enemigo : true,
 			z : 1
 		});
 
-		this.add("2d, aiBounce, animation");
+		this.add("2d, aiBounce, animation,tween,morirDeCabeza");
 
 		this.play("caminar");
 		//escucha el evento bump.top
@@ -70,13 +72,20 @@ Q.Sprite.extend("TortugaVerde", {
 		//si no se pasa la bandera de animar,su valor por default es true
 		var animar = ( typeof animar === "undefined") ? true : animar;
 
-		//destruimos a esta entidad
-		this.destroy();
+		//ejecutamos la animacion si animar = true
+		if (animar) {
+			Q.audio.play("patada.mp3");
+			this.morirDeCabeza();
+		} else {
+			//simplemente destruimos a esta entidad
+			this.destroy();
+		}
 
 	},
 	aConcha : function(colision) {
 		//Detectar si es mario el que le cayó encima
 		if (colision.obj.isA("Jugador")) {
+			this.del("saltarin");
 			//mario rebota
 			colision.obj.p.vy = -500;
 			//suena patada.mp3
@@ -103,14 +112,16 @@ Q.Sprite.extend("TortugaVerde", {
 		}
 	},
 	step : function() {
-		//voltear cuando va a la derecha, vx+
-		if (this.p.vx > 0) {
-			this.p.flip = "x";
-		}
-
-		//no voltear cuando va a la izquierda vx-
-		if (this.p.vx < 0) {
-			this.p.flip = false;
+		
+		//mientras este vivo
+		if (this.p.vivo === true) {
+			//voltear cuando va a la derecha, vx+
+			if (this.p.vx > 0) {
+				this.p.flip = "x";
+			} else if (this.p.vx < 0) {
+				//no voltear cuando va a la izquierda vx-
+				this.p.flip = false;
+			}
 		}
 	}
 });

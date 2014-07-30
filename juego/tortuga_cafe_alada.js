@@ -22,7 +22,11 @@ Q.TortugaVerde.extend("TortugaCafeAlada",{
 		//esta clase TortugaCafe para ser la tortuga Cafe
 		this._super(Q._extend(p,{
 			sprite: "animacionesTortugaCafeAlada",
-			sheet: "tortugas"		
+			sheet: "tortugas",
+			//--------- NUESTRAS PROPIEDADES ----------------						
+			frameMorir : 5,//usamos este frame para el componente morirDeCabeza	
 		}));	
+		
+		this.add("saltarin");
 	}
 });

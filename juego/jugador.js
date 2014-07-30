@@ -41,7 +41,10 @@ Q.Sprite.extend("Jugador", {
 			speed : 150,
 			//DECLARAMOS NUESTRAS PROPIEDADES
 			estaVivo : true,
-			z : 1
+			z : 1,
+			//obtenemos la altura del escenario, mas adelante la usamos
+			//para calcular si el mario se cayo del escenario
+			alturaEscenario:Q("TileLayer").first().p.h
 		});
 		this.add("2d, platformerControls, animation, tween");
 
@@ -205,6 +208,11 @@ Q.Sprite.extend("Jugador", {
 			//ejecutar animacion quieto
 			if (this.p.vy === 0 && this.p.vx === 0) {
 				this.play("quieto");
+			}
+			
+			if(this.p.y > this.p.alturaEscenario){
+				//mata al mario sin la animacion
+				this.morir(false);
 			}
 		}
 

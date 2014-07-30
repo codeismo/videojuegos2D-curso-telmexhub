@@ -24,7 +24,7 @@ Q.Sprite.extend("Goomba", {
 			enemigo : true,
 			z : 1
 		});
-		this.add("2d, aiBounce, animation");
+		this.add("2d, aiBounce, animation,morirDeCabeza,tween");
 		//Ejecuta la animacion caminar siempre
 		this.play("caminar");
 		//escuchar las colisiones por arriba
@@ -47,21 +47,26 @@ Q.Sprite.extend("Goomba", {
 			}
 		});
 	},
-	morir:function(animar){
+	morir : function(animar) {
 		//si no se pasa la bandera de animar,su valor por default es true
-		var animar = (typeof animar === "undefined")?true:animar;
-		
-		this.destroy();
+		var animar = ( typeof animar === "undefined") ? true : animar;
+
+		if (animar) {			
+			Q.audio.play("patada.mp3");
+			this.morirDeCabeza();
+		} else {
+			this.destroy();
+		}
+
 	},
 	aplasta : function(colision) {
 		//revisar si colisione con Mario
 		if (colision.obj.isA("Jugador")) {
-			
+
 			//le quitamos la velocidad en x a este enemigo
 			this.p.vx = 0;
-			
-			//suene bump
-			Q.audio.play("bump.ogg");
+
+			Q.audio.play("patada.mp3");
 			//hacemos que mario rebote
 			colision.obj.p.vy = -500;
 			//Goomba muere
