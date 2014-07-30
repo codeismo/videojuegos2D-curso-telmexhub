@@ -3,7 +3,8 @@
 Q.Tuberia.extend("TuberiaSalida", {
 	init : function(p) {
 		this._super(Q._extend(p, {
-			frame : 6
+			frame : 6,
+			z: 2
 		}));
 	}
 });

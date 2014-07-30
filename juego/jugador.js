@@ -44,7 +44,7 @@ Q.Sprite.extend("Jugador", {
 			z : 1,
 			//obtenemos la altura del escenario, mas adelante la usamos
 			//para calcular si el mario se cayo del escenario
-			alturaEscenario:Q("TileLayer").first().p.h
+			alturaEscenario : Q("TileLayer").first().p.h
 		});
 		this.add("2d, platformerControls, animation, tween");
 
@@ -54,7 +54,27 @@ Q.Sprite.extend("Jugador", {
 			if (colision.obj.isA("Tuberia") && Q.inputs["down"]) {
 				//llamar a la escena del subterranea
 				Q.audio.stop("tema_superficie.mp3");
-				Q.stageScene("mundo1Subterraneo", 2);
+				this.p.sensor = true;
+				this.del("2d");
+				//UNA VEZ QUE INSERTAMOS AL HONGO, HACEMOS UNA ANIMACION TWEEN
+				Q.audio.play("tuberia.mp3");
+				this.animate({
+					//anima a mario en la cordenada y de la tuberia
+					y : this.p.y + 30
+				}, 0.5, {
+					//ejecutamos esta funcion una vez que el hongo salio por completo
+					//de su caja
+					callback : function() {
+						//regresamos al hongo el modulo 2d para detectar colisones
+						//deshabilitamos la propiedad sensor
+						this.p.sensor = false;
+						this.add("2d");
+						Q.stageScene("mundo1Subterraneo", 2, {
+							//sort = HABILITA EL ORDENAMIENTO CON LA PROPIEDAD Z
+							sort : true
+						});
+					}
+				});
 			}
 		});
 
@@ -64,27 +84,51 @@ Q.Sprite.extend("Jugador", {
 			if (colision.obj.isA("TuberiaSalida") && Q.inputs["right"]) {
 				//detiene el audio del mundo subterraneo
 				Q.audio.stop("subterraneo.mp3");
+				Q.audio.play("tuberia.mp3");
+				this.p.sensor = true;
+				this.del("2d");
+				this.animate({
+					//anima a mario en la cordenada y de la tuberia
+					x : this.p.x + 30
+				}, 0.5, {
+					//ejecutamos esta funcion una vez que el hongo salio por completo
+					//de su caja
+					callback : function() {
+						//darle stop al mundo subterraneo
+						this.stage.stop();
+						//activar la escena previa (mundo1)
+						this.p.escena_previa.start();
 
-				//darle stop al mundo subterraneo
-				this.stage.stop();
+						//el atributo stage de mario debe ser el mundo1
+						this.stage = this.p.escena_previa;
 
-				//activar la escena previa (mundo1)
-				this.p.escena_previa.start();
+						//asignar coordenadas de acuerdo a la tuberia de regreso
+						var tuberia = Q("TuberiaRegreso", 0).first();
 
-				//asignar coordenadas de acuerdo a la tuberia de regreso
-				var tuberia = Q("TuberiaRegreso",0).first();
-			
-				this.p.x = tuberia.p.x + 32;
-				this.p.y = tuberia.p.y - 40;
+						this.p.x = tuberia.p.x;
+						this.p.y = tuberia.p.y;
 
-				//el atributo stage de mario debe ser el mundo1
-				this.stage = this.p.escena_previa;
+						//UNA VEZ QUE INSERTAMOS AL HONGO, HACEMOS UNA ANIMACION TWEEN
+						this.animate({
+							//anima a mario en la cordenada y de la tuberia
+							y : this.p.y - this.p.h - tuberia.p.h
+						}, 0.5, {
+							//ejecutamos esta funcion una vez que el hongo salio por completo
+							//de su caja
+							callback : function() {
+								//regresamos al hongo el modulo 2d para detectar colisones
+								//deshabilitamos la propiedad sensor
+								this.p.sensor = false;
+								this.add("2d");
+								//dar play al audio del mundo 1
+								Q.audio.play("tema_superficie.mp3", {
+									loop : true
+								});
+							}
+						});
 
-				//dar play al audio del mundo 1
-				Q.audio.play("tema_superficie.mp3", {
-					loop : true
+					}
 				});
-
 			}
 		});
 
@@ -212,8 +256,8 @@ Q.Sprite.extend("Jugador", {
 			if (this.p.vy === 0 && this.p.vx === 0) {
 				this.play("quieto");
 			}
-			
-			if(this.p.y > this.p.alturaEscenario){
+
+			if (this.p.y > this.p.alturaEscenario) {
 				//mata al mario sin la animacion
 				this.morir(false);
 			}
