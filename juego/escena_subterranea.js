@@ -18,10 +18,26 @@ Q.scene("mundo1Subterraneo", function(stage){
 	Q.stageTMX("mundo1_subway.tmx",stage);
 
 	//insertar a Mario
-	mario.p.x = 70;
-	mario.p.y = 0;
+	mario.p.x = 100;
+	mario.p.y = 40;
 	
 	stage.insert(mario);
+	
+	//obtener mi capa de fondo
+	var capaFondo = Q("TileLayer").first();
+	
+	//La camara siga a Mario
+	stage.add("viewport").follow( mario,{
+		x: true,
+		y: true
+	},{
+		minX:32,
+		//ancho de la capa de cielo 
+		//es el mismo que el ancho del canvas
+		maxX: capaFondo.p.w - 32,
+		minY: 32,
+		maxY: capaFondo.p.h
+	} );
 	
 	Q.audio.play("subterraneo.mp3", {
 		loop: true
