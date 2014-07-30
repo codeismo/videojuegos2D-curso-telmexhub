@@ -2073,7 +2073,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="63"/>
-   <tile gid="63"/>
+   <tile gid="0"/>
    <tile gid="63"/>
    <tile gid="0"/>
    <tile gid="63"/>
@@ -2437,5 +2437,10 @@
   <object gid="110" x="1105" y="233"/>
   <object gid="109" x="828" y="307"/>
   <object gid="116" x="1498" y="353"/>
+  <object gid="127" x="351" y="256">
+   <properties>
+    <property name="claseRegalo" value="HongoCrece"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
