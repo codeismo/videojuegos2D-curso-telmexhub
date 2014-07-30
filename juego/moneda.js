@@ -14,6 +14,7 @@ Q.Sprite.extend("Moneda", {
 			frame : 1,
 			//DESHABILITAMOS LA GRAVEDAD
 			gravity : 0,
+			sensor: true
 
 		});
 		this.add("2d,animation");

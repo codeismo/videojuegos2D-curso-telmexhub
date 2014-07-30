@@ -5,9 +5,7 @@ var Q = Quintus({
 
 //el juego se ejecutará en la etiqueta del canvas cuyo id es juego
 //opcionalmente se puede dar como segundo parametro un objeto de configuración
-Q.setup("juego", {
-	maximize : true
-});
+Q.setup("juego");
 
 //modulos a utilizar (6)
 Q.include("Sprites, Scenes, 2D, Input, Touch, TMX, Anim, Audio, UI");
