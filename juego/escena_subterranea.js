@@ -22,7 +22,6 @@ Q.scene("mundo1Subterraneo", function(stage){
 	mario.p.y = 40;
 	
 	stage.insert(mario);
-	debugger;
 	//obtener mi capa de fondo
 	var capaFondo = Q("TileLayer",2).first();
 	

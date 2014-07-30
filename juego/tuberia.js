@@ -1,4 +1,4 @@
-//tuberia del mundo1 para entrar y regresar del subterraneo
+//tuberia del mundo1 para entrar al subterraneo
 
 Q.Sprite.extend("Tuberia", {
 	init : function(p) {

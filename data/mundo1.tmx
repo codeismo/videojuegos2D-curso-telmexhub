@@ -44,6 +44,11 @@
  </tileset>
  <tileset firstgid="115" name="tuberias" tilewidth="64" tileheight="64">
   <image source="../images/tuberias.png" width="192" height="192"/>
+  <tile id="1">
+   <properties>
+    <property name="Class" value="TuberiaRegreso"/>
+   </properties>
+  </tile>
   <tile id="2">
    <properties>
     <property name="Class" value="Tuberia"/>
@@ -2434,6 +2439,6 @@
   <object gid="110" x="1105" y="233"/>
   <object gid="109" x="1408" y="321"/>
   <object gid="109" x="828" y="307"/>
-  <object gid="117" x="1500" y="351"/>
+  <object gid="116" x="1498" y="353"/>
  </objectgroup>
 </map>
