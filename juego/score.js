@@ -76,7 +76,7 @@ Q.scene("score", function(stage) {
 	//SEGUNDO EL CONTADOR DEL TIEMPO
 	// primer argumento: ES LA FUNCION QUE SE EJECUTA EN UN PERIODO DE TIEMPO
 	// segundo argumento: ES EL PERIODO EN EL QUE EJECUT LA FUNCION
-	setInterval(function() {
+	var idIntervalo = setInterval(function() {
 
 		//obtiene el valor de la variable tiempo asociada al estado
 		var tiempo = Q.state.get("tiempo");
@@ -86,6 +86,15 @@ Q.scene("score", function(stage) {
 		if (tiempo > 0 && Q.pausado === false) {
 			//toma la variable tiempo y la decrementa en una unidad
 			Q.state.dec("tiempo", 1);
+		} else if(tiempo === 0 && Q.pausado ===false){
+			//si ya se acabo el tiempo y el juego no esta pausado
+			
+			//detenemos el timer del juego
+			clearInterval(idIntervalo);
+			
+			// matamos al mario
+			Q("Jugador").first().morir();
+						
 		}
 
 	}, 1000);
@@ -97,7 +106,7 @@ Q.scene("score", function(stage) {
 Q.UI.Text.extend("ContadorTiempo", {
 	init : function(p) {
 		this._super(p, {
-			label : "100",
+			label : "300",
 			color : "white",
 			size : 15,
 			family : 'Press Start'
