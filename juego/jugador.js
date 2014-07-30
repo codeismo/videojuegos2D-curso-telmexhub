@@ -73,8 +73,9 @@ Q.Sprite.extend("Jugador", {
 
 				//asignar coordenadas de acuerdo a la tuberia de regreso
 				var tuberia = Q("TuberiaRegreso",0).first();
-				this.p.x = tuberia.p.x;
-				this.p.y = 64;
+			
+				this.p.x = tuberia.p.x + 32;
+				this.p.y = tuberia.p.y - 40;
 
 				//el atributo stage de mario debe ser el mundo1
 				this.stage = this.p.escena_previa;
