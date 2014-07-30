@@ -1,23 +1,23 @@
 //crear el grupo de animaciones para la tortuga verde
-Q.animations("animacionesTortugaVerde",{
+Q.animations("animacionesTortugaCafe",{
 	caminar: {
-		frames:[0, 1],
+		frames:[2, 4],
 		rate: 1 / 2,
 		loop: true
 	},
 	enConchar: {
-		frames: [2, 4],
+		frames: [6, 5],
 		rate: 1 / 4,
 		loop: false
 	}
 });
 
-Q.Sprite.extend("TortugaVerde",{
+Q.Sprite.extend("TortugaCafe",{
 	init: function(p){
 		this._super(p,{
-			sprite: "animacionesTortugaVerde",
+			sprite: "animacionesTortugaCafe",
 			sheet: "tortugas",
-			frame: 0,
+			frame: 2,
 			vx:120,
 			//DEFINIMOS NUESTRAS PROPIEDADES
 			esConcha: false,

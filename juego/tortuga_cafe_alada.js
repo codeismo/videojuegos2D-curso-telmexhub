@@ -1,23 +1,23 @@
 //crear el grupo de animaciones para la tortuga verde
-Q.animations("animacionesTortugaVerde",{
+Q.animations("animacionesTortugaCafeAlada",{
 	caminar: {
-		frames:[0, 1],
+		frames:[3, 7],
 		rate: 1 / 2,
 		loop: true
 	},
 	enConchar: {
-		frames: [2, 4],
+		frames: [6, 5],
 		rate: 1 / 4,
 		loop: false
 	}
 });
 
-Q.Sprite.extend("TortugaVerde",{
+Q.Sprite.extend("TortugaCafeAlada",{
 	init: function(p){
 		this._super(p,{
-			sprite: "animacionesTortugaVerde",
+			sprite: "animacionesTortugaCafeAlada",
 			sheet: "tortugas",
-			frame: 0,
+			frame: 3,
 			vx:120,
 			//DEFINIMOS NUESTRAS PROPIEDADES
 			esConcha: false,
@@ -25,7 +25,8 @@ Q.Sprite.extend("TortugaVerde",{
 			z:1
 		});
 		
-		this.add("2d, aiBounce, animation");
+		//agregamos nuestro componente saltarin
+		this.add("2d, aiBounce, animation, saltarin");
 		
 		this.play("caminar");
 		//escucha el evento bump.top
