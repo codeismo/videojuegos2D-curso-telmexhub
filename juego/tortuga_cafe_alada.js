@@ -12,66 +12,17 @@ Q.animations("animacionesTortugaCafeAlada",{
 	}
 });
 
-Q.Sprite.extend("TortugaCafeAlada",{
+
+//Podemos extender una clase existente 
+//observe que aqui estamos extendiendo la clase TortugaVerde
+// extender = heredar caracteristicas de otra clase 
+Q.TortugaVerde.extend("TortugaCafeAlada",{
 	init: function(p){
-		this._super(p,{
+		//extendemos las propiedades de la clase TortugaVerde con las propiedades que necesita
+		//esta clase TortugaCafe para ser la tortuga Cafe
+		this._super(Q._extend(p,{
 			sprite: "animacionesTortugaCafeAlada",
-			sheet: "tortugas",
-			frame: 3,
-			vx:120,
-			//DEFINIMOS NUESTRAS PROPIEDADES
-			esConcha: false,
-			enemigo:true,
-			z:1
-		});
-		
-		//agregamos nuestro componente saltarin
-		this.add("2d, aiBounce, animation, saltarin");
-		
-		this.play("caminar");
-		//escucha el evento bump.top
-		this.on("bump.top", this, "aConcha");
-	},
-	aConcha:function(colision){
-		//Detectar si es mario el que le cayó encima
-		if( colision.obj.isA("Jugador") ){
-			//mario rebota
-			colision.obj.p.vy = -500;
-			//suena patada.mp3
-			Q.audio.play("patada.mp3");
-			
-			//si la tortuga no es concha
-			if( !this.p.esConcha ){
-				//cambiar el sheet por el de enemigos bajos
-				this.sheet("enemigosBajos", true);
-				//activa la bandera esConcha
-				this.p.esConcha = true;
-				//removemos el componente saltarin
-				this.del("saltarin");
-			}
-			
-			//hacer que la tortuga se quede quieta cuando se esta moviendo
-			if(this.p.vx != 0){
-				this.p.vx = 0;
-			}else{
-			//hacer que la tortuga se mueva cuando esta quieta
-				this.p.vx = 500;
-			}
-			
-			
-			//ejecutar la animacion enconchar
-			this.play("enConchar");
-		}
-	},
-	step: function(){
-		//voltear cuando va a la derecha, vx+
-		if(this.p.vx > 0){
-			this.p.flip = "x";
-		}
-		
-		//no voltear cuando va a la izquierda vx-
-		if(this.p.vx < 0){
-			this.p.flip = false;
-		}
+			sheet: "tortugas"		
+		}));	
 	}
 });
