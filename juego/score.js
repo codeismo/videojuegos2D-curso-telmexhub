@@ -7,23 +7,51 @@ Q.UI.Text.extend("PuntosGoomba", {
 		this._super(p, {
 			label : "0",
 			color : "white",
-			size : 15,
+			size : 14,
 			family : 'Press Start'
 		});
 		//escuchar el evento change.goombasMuertos
 		Q.state.on("change.goombasMuertos", this, "actualizaPuntaje");
+		//escuchar el evento change.goombasMuertos
 	},
 
 	actualizaPuntaje : function(puntajeGoombas) {
 		//actualiza el label
 		this.p.label = "" + puntajeGoombas;
+	},
+	
+});
+
+//crear un texto que corresponde al numero de Goombas muertos
+//esta Clase se extendera de la clase UI.Text
+//El objeto texto puede escuchar eventos
+Q.UI.Text.extend("Monedas", {
+	init : function(p) {
+
+		this._super(p, {
+			label : "x0",
+			color : "white",
+			size : 14,
+			family : 'Press Start'
+		});
+		//escuchar el evento change.goombasMuertos
+		Q.state.on("change.monedas", this, "actualizaMonedas");
+	},
+
+	actualizaMonedas : function(monedas) {
+		//actualiza el label
+		this.p.label = "x" + monedas;
 	}
 });
 
 //definir la escena score
 Q.scene("score", function(stage) {
-	//creamos una variable del Game State
+	//obtenemos el ancho del canvas
+	var anchoCanvas = Q.width;
+
+	//creamos las variables del Game State
 	Q.state.set("goombasMuertos", 0);
+	Q.state.set("monedas", 0);
 
 	//declaramos otra variable de estado
 	//las variables de estado estan asociadas con el juego
@@ -34,17 +62,17 @@ Q.scene("score", function(stage) {
 
 	//creamos un objeto de tipo PuntosGoomba y lo insertamos en la escena
 	var valorPuntaje = new Q.PuntosGoomba({
-		x : Q.width - 500,
+		x : anchoCanvas / 8,
 		y : 40
 	});
 
 	//creando un elemento texto que diga "Puntaje"
 	var textoPuntaje = new Q.UI.Text({
-		label : "Puntaje",
+		label : "Mario",
 		color : "white",
 		y : 20,
-		x : Q.width - 500,
-		size : 15,
+		x : anchoCanvas / 8,
+		size : 14,
 		family : 'Press Start'
 	});
 	//insertar el texto y el valor del puntaje en el stage
@@ -55,7 +83,7 @@ Q.scene("score", function(stage) {
 	//ESTAMOS INSTANCIANDO LA CLASE ContadorTiempo
 	var contadorTiempo = new Q.ContadorTiempo({
 		y : 40,
-		x : Q.width - 300,
+		x : 7 * anchoCanvas / 8,
 	});
 
 	//creando un elemento texto que diga "Tiempo"
@@ -63,8 +91,8 @@ Q.scene("score", function(stage) {
 		label : "Tiempo",
 		color : "white",
 		y : 20,
-		x : Q.width - 300,
-		size : 15,
+		x : 7 * anchoCanvas / 8,
+		size : 14,
 		family : 'Press Start'
 	});
 
@@ -86,18 +114,56 @@ Q.scene("score", function(stage) {
 		if (tiempo > 0 && Q.pausado === false) {
 			//toma la variable tiempo y la decrementa en una unidad
 			Q.state.dec("tiempo", 1);
-		} else if(tiempo === 0 && Q.pausado ===false){
+		} else if (tiempo === 0 && Q.pausado === false) {
 			//si ya se acabo el tiempo y el juego no esta pausado
-			
+
 			//detenemos el timer del juego
 			clearInterval(idIntervalo);
-			
+
 			// matamos al mario
 			Q("Jugador").first().morir();
-						
+
 		}
 
 	}, 1000);
+
+	//creando un elemento texto que diga "Mundo"
+	var textoMundo = new Q.UI.Text({
+		label : "Mundo",
+		color : "white",
+		y : 20,
+		x : 5 * anchoCanvas / 8,
+		size : 14,
+		family : 'Press Start'
+	});
+
+	var mundo = Q("Jugador",0).first().stage.scene.name;
+	var nombreMundo = new Q.UI.Text({
+		label : mundo,
+		color : "white",
+		y : 40,
+		x : 5 * anchoCanvas / 8,
+		size : 14,
+		family : 'Press Start'
+	});
+
+	stage.insert(textoMundo);
+	stage.insert(nombreMundo);
+	
+	var monedaImagen = new Q.UI.Button({
+		asset: "moneda_menu.png",
+		x : 3 * anchoCanvas / 8 - 16,
+		y : 46
+	});
+	
+	var contadorMonedas = new Q.Monedas({
+		label: "x0",
+		x : (3 * anchoCanvas / 8) + 13,
+		y : 40
+	});
+
+	stage.insert(monedaImagen);
+	stage.insert(contadorMonedas);
 
 });
 
@@ -108,7 +174,7 @@ Q.UI.Text.extend("ContadorTiempo", {
 		this._super(p, {
 			label : "300",
 			color : "white",
-			size : 15,
+			size : 14,
 			family : 'Press Start'
 		});
 

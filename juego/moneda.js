@@ -27,7 +27,7 @@ Q.Sprite.extend("Moneda", {
 				Q.audio.play("moneda.mp3");
 				this.destroy();
 				//incrementa el numero de Goombas muertos
-				Q.state.inc("goombasMuertos", 20);
+				Q.state.inc("monedas", 1);
 			}
 		});
 	}
