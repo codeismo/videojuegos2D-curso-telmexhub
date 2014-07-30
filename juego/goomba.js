@@ -21,8 +21,8 @@ Q.Sprite.extend("Goomba", {
 			frame : 0,
 			vx : 130,
 			// DEFINIMOS NUESTRAS PROPIEDADES
-			enemigo:true,
-			z:1
+			enemigo : true,
+			z : 1
 		});
 		this.add("2d, aiBounce, animation");
 		//Ejecuta la animacion caminar siempre
@@ -31,14 +31,35 @@ Q.Sprite.extend("Goomba", {
 		this.on("bump.top", this, "aplasta");
 		//trigger
 		this.on("destruir", function() {
-			this.destroy();
+			this.morir(false);
 			//incrementa el numero de Goombas muertos
 			Q.state.inc("goombasMuertos", 10);
 		});
+
+		//escucha el evento hit
+		this.on("hit", this, function(colision) {
+
+			//si el objeto que golpeo a esta entidad es una tortuga
+			//en forma de concha QUE LLEVA VELOCIDAD
+			if (colision.obj.p.esConcha === true && colision.obj.p.vx != 0) {
+				//hacemos que muera este sprite
+				this.morir(true);
+			}
+		});
+	},
+	morir:function(animar){
+		//si no se pasa la bandera de animar,su valor por default es true
+		var animar = (typeof animar === "undefined")?true:animar;
+		
+		this.destroy();
 	},
 	aplasta : function(colision) {
 		//revisar si colisione con Mario
 		if (colision.obj.isA("Jugador")) {
+			
+			//le quitamos la velocidad en x a este enemigo
+			this.p.vx = 0;
+			
 			//suene bump
 			Q.audio.play("bump.ogg");
 			//hacemos que mario rebote
@@ -48,4 +69,4 @@ Q.Sprite.extend("Goomba", {
 			//this.destroy();
 		}
 	}
-}); 
+});

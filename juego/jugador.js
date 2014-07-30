@@ -128,8 +128,13 @@ Q.Sprite.extend("Jugador", {
 			//esta funcion se ejecuta cuando se produce la colision
 
 			//si el objeto con el que choco mario es un enemigo
-			//entonces mario debe morir!!
-			if (colision.obj.p.enemigo === true) {
+			//y si ese enemigo no es una tortuga en forma de concha, entonces ...
+			//mario debe morir!!
+			if (colision.obj.p.enemigo === true && colision.obj.p.esConcha !== true) {
+
+				this.morir();
+			} else if (colision.obj.p.esConcha === true && colision.obj.p.vx !== 0) {
+				//si es una concha Y LLEVA VELOCIDAD, MARIO TAMBIEN DEBE DE MORIR
 				this.morir();
 			}
 		});
