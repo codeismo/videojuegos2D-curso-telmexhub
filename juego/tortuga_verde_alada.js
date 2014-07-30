@@ -46,6 +46,8 @@ Q.Sprite.extend("TortugaVerdeAlada",{
 				this.sheet("enemigosBajos", true);
 				//activa la bandera esConcha
 				this.p.esConcha = true;
+				//removemos el componente saltarin
+				this.del("saltarin");
 			}
 			
 			//hacer que la tortuga se quede quieta cuando se esta moviendo
