@@ -59,7 +59,9 @@ Q.Sprite.extend("Jugador", {
 		this.on("bump.right", function(colision) {
 
 			if (colision.obj.isA("TuberiaSalida") && Q.inputs["right"]) {
-				//llamar al mundo original
+				//detiene el audio del mundo subterraneo
+				Q.audio.stop("subterraneo.mp3");
+
 				//darle stop al mundo subterraneo
 				this.stage.stop();
 
@@ -72,6 +74,12 @@ Q.Sprite.extend("Jugador", {
 
 				//el atributo stage de mario debe ser el mundo1
 				this.stage = this.p.escena_previa;
+
+				//dar play al audio del mundo 1
+				Q.audio.play("tema_superficie.mp3", {
+					loop : true
+				});
+
 			}
 		});
 
