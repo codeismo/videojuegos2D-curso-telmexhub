@@ -1,7 +1,7 @@
 //D66
 //indicar en una cadena los recursos: audios, imagenes, tmx, json
 //callback para configurar los sprites
-var recursos = "moneda.mp3, mosaicos_objetos.png, subterraneo.mp3, mario_muere.mp3,pausa.mp3,bump.ogg, patada.mp3, salto_enano.mp3, tema_superficie.mp3, mundo1.tmx, mosaicos_escenario_32x32.png, mosaicos_mario_enano_30x30.png, mosaicos_enemigos_32x32.png, mosaicos_enemigos_32x46.png, mosaicos_subway.png, tuberias.png, moneda.png, mundo1_subway.tmx";
+var recursos = "tuberia.mp3, regalo_arriba.mp3, moneda.mp3, mosaicos_objetos.png, subterraneo.mp3, mario_muere.mp3,pausa.mp3,bump.ogg, patada.mp3, salto_enano.mp3, tema_superficie.mp3, mundo1.tmx, mosaicos_escenario_32x32.png, mosaicos_mario_enano_30x30.png, mosaicos_enemigos_32x32.png, mosaicos_enemigos_32x46.png, mosaicos_subway.png, tuberias.png, moneda.png, mundo1_subway.tmx";
 
 Q.load(recursos, function() {
 	//se ejecuta hasta que los recursos estén listos

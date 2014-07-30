@@ -55,7 +55,7 @@ Q.scene("score", function(stage) {
 	//ESTAMOS INSTANCIANDO LA CLASE ContadorTiempo
 	var contadorTiempo = new Q.ContadorTiempo({
 		y : 40,
-		x : Q.width - 200,
+		x : Q.width - 300,
 	});
 
 	//creando un elemento texto que diga "Tiempo"
@@ -63,7 +63,7 @@ Q.scene("score", function(stage) {
 		label : "Tiempo",
 		color : "white",
 		y : 20,
-		x : Q.width - 200,
+		x : Q.width - 300,
 		size : 15,
 		family : 'Press Start'
 	});
