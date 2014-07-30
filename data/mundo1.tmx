@@ -46,7 +46,7 @@
   <image source="../images/tuberias.png" width="192" height="192"/>
   <tile id="2">
    <properties>
-    <property name="Class" value="TuberiaEntrada"/>
+    <property name="Class" value="Tuberia"/>
    </properties>
   </tile>
  </tileset>
@@ -2104,8 +2104,8 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="28"/>
-   <tile gid="29"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2164,8 +2164,8 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="37"/>
-   <tile gid="38"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2224,8 +2224,8 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="46"/>
-   <tile gid="47"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2284,8 +2284,8 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="55"/>
-   <tile gid="56"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2434,5 +2434,6 @@
   <object gid="110" x="1105" y="233"/>
   <object gid="109" x="1408" y="321"/>
   <object gid="109" x="828" y="307"/>
+  <object gid="117" x="1500" y="351"/>
  </objectgroup>
 </map>
