@@ -18,24 +18,24 @@ Q.controls();
 Q.touch();
 //Q.controls().touch();
 
-/*----- DEFINIMOS UNA FUNCION AUXILIAR GENERICA PARA DETENER A TODOS LOS ENEMIGOS--------*/
+/*----- DEFINIMOS UNA FUNCION AUXILIAR GENERICA PARA DETENER A TODOS LOS spriteS--------*/
 
-Q.pausarEnemigos = function() {
+Q.pausarSprites = function() {
 
-	var enemigosClases = ["Goomba", "TortugaVerde","TortugaCafe","TortugaVerdeAlada","TortugaCafeAlada"];
+	var spritesClases = ["Moneda","Caja","HongoVida","Goomba", "TortugaVerde","TortugaCafe","TortugaVerdeAlada","TortugaCafeAlada"];
 
-	//iteramos todas las cadenas (nombre de clases de enemigos) del arreglo enemigosClases
-	enemigosClases.forEach(function(enemigoClase) {
-		//por cada clase de Enemigo buscamos en el juego si hay una instancia de dicha
+	//iteramos todas las cadenas (nombre de clases de sprites) del arreglo spritesClases
+	spritesClases.forEach(function(spriteClase) {
+		//por cada clase de sprite buscamos en el juego si hay una instancia de dicha
 		//clase
-		Q(enemigoClase).items.forEach(function(enemigo) {
+		Q(spriteClase).items.forEach(function(sprite) {
 
-			//por cada enemigo deshabilitamos las colisiones
-			//enemigo.p.sensor = true;
-			//por cada enemigo deshabilitamos sus animaciones
-			enemigo.p.animation = null;
-			//por cada enemigo deshabilitamos su velocidad y gravedad
-			enemigo.del("2d");			
+			//por cada sprite deshabilitamos las colisiones
+			sprite.p.sensor = true;
+			//por cada sprite deshabilitamos sus animaciones
+			sprite.p.animation = null;
+			//por cada sprite deshabilitamos su velocidad y gravedad
+			sprite.del("2d");			
 		});
 	});	
 };

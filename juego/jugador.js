@@ -163,7 +163,7 @@ Q.Sprite.extend("Jugador", {
 
 		//DETENEMOS A TODOS LOS ENEMIGOS
 		//este metodo esta definido en el archivo inicializar.js
-		Q.pausarEnemigos();
+		Q.pausarSprites();
 		//pausamos el timer del juego
 		Q.pausado = true;
 
