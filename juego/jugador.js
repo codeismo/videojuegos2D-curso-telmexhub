@@ -26,6 +26,23 @@ Q.animations("animacionesMario", {
 	}
 });
 
+Q.animations("animacionesMarioGrande", {
+	caminar : {
+		frames : [1, 2, 3],
+		rate : 1 / 6,
+		loop : false
+	},
+	saltar : {
+		frames : [4],
+		rate : 1 / 2
+	},
+	quieto : {
+		frames : [0],
+		rate : 1 / 2,
+		loop : false
+	}
+});
+
 //D57
 //Definimos la clase Jugador que se extiende la clase Sprite
 //Sprite pertenece al core de Quintu
@@ -38,15 +55,27 @@ Q.Sprite.extend("Jugador", {
 			sheet : "jugador",
 			frame : 1,
 			jumpSpeed : -600,
-			speed : 150,
+			speed : 200,
 			//DECLARAMOS NUESTRAS PROPIEDADES
 			estaVivo : true,
 			z : 1,
 			//obtenemos la altura del escenario, mas adelante la usamos
 			//para calcular si el mario se cayo del escenario
-			alturaEscenario : Q("TileLayer").first().p.h
+			alturaEscenario : Q("TileLayer").first().p.h,
+			sheetGrande : "jugadorGrande",
+			animacionesGrande : "animacionesMarioGrande",
+			esEnano : true, //bandera que indica si mario es enano o grande
+			invencible : false//esta propiedad es para cuando mario come un hongo o se hace enano
 		});
 		this.add("2d, platformerControls, animation, tween");
+
+		this.on("hit", function(colision) {
+			//si mario comio un hongo para crecer
+			if (colision.obj.isA("HongoCrece")) {
+				//hacemos que crezca
+				this.crecer();
+			}
+		});
 
 		//escucho cuando colisiono por abajo con la tuberia de entrada
 		this.on("bump.bottom", function(colision) {
@@ -105,7 +134,7 @@ Q.Sprite.extend("Jugador", {
 						Q.stageScene("mundo1", {
 							propiedadesMario : this.p
 						});
-						
+
 						//destruimos este mario y su escena
 						this.stage.destroy();
 					}
@@ -158,18 +187,83 @@ Q.Sprite.extend("Jugador", {
 		this.on("bump.left, bump.right, bump.top", function(colision) {
 			//esta funcion se ejecuta cuando se produce la colision
 
+			//si mario no es invencible Y
 			//si el objeto con el que choco mario es un enemigo
 			//y si ese enemigo no es una tortuga en forma de concha, entonces ...
-			//mario debe morir!!
-			if (colision.obj.p.enemigo === true && colision.obj.p.esConcha !== true) {
+			if (this.p.invencible === false && colision.obj.p.enemigo === true && colision.obj.p.esConcha !== true) {
 
-				this.morir();
-			} else if (colision.obj.p.esConcha === true && colision.obj.p.vx !== 0) {
-				//si es una concha Y LLEVA VELOCIDAD, MARIO TAMBIEN DEBE DE MORIR
-				this.morir();
+				//SI MARIO ES ENANO debe morir!!
+				if (this.p.esEnano) {
+					this.morir();
+				} else {
+					//si es grande hacemos que se vuelva enano
+					this.decrecer();					
+				}
+			} else if (this.p.invencible === false && colision.obj.p.esConcha === true && colision.obj.p.vx !== 0) {
+				//si es una concha Y LLEVA VELOCIDAD ...
+								
+				//SI MARIO ES ENANO debe morir!!
+				if (this.p.esEnano) {
+					this.morir();
+				} else {
+					//si es grande hacemos que se vuelva enano
+					this.decrecer();					
+				}
 			}
 		});
 
+	},
+	//funcion auxiliar que hace decrecer a mario
+	decrecer : function() {
+		this.p.opacity = 0.5;		
+		//temporalmente hacemos al mario grande 50% de su tam original
+		//hacemos al jugador temporalmente invencible
+		this.p.invencible = true;
+		this.p.sensor = true;
+		
+		Q.audio.play("mario_decrece.mp3");
+
+		this.animate({
+			scale : 0.5,
+			opacity : 1
+		}, 0.5, {
+			callback : function() {
+				this.p.sensor = false;
+				this.p.esEnano = true;
+				//terminada la animacion del mario hacemos que ya no sea invencible
+				this.p.invencible = false;
+				//cambiamos las animaciones por su original				
+				this.p.sprite = "animacionesMario";
+				this.sheet("jugador", true);
+				this.p.scale = 1;
+
+			}
+		});
+	},
+	//funcion auxiliar que hace crecer a mario
+	crecer : function() {
+		this.p.sprite = this.p.animacionesGrande;
+		this.p.opacity = 0.5;
+		this.p.scale = 0.5;
+		this.p.esEnano = false;
+		//temporalmente hacemos al mario grande 50% de su tam original
+		//hacemos al jugador temporalmente invencible
+		this.p.invencible = true;
+		this.sheet(this.p.sheetGrande, true);
+		this.p.sensor = true;
+		
+		//Q.audio.play("mario_crece.mp3");		
+
+		this.animate({
+			scale : 1,
+			opacity : 1
+		}, 0.5, {
+			callback : function() {
+				this.p.sensor = false;
+				//terminada la animacion del mario hacemos que ya no sea invencible
+				this.p.invencible = false;
+			}
+		});
 	},
 	//funcion que detona la muerte de mario
 	//el parametro animar determina si al morir mario debe de ejecutar la animacion que lo saca del escenario

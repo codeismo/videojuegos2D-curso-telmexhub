@@ -5,7 +5,7 @@ Q.Tuberia.extend("TuberiaRegreso", {
 		this._super(Q._extend(p, {
 			sheet : "tuberias",
 			frame : 1,
-			z:1
+			z:2
 		}));
 		this.add("2d");
 

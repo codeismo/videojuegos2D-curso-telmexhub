@@ -5,7 +5,7 @@ Q.Sprite.extend("Tuberia", {
 		this._super(p, {
 			sheet : "tuberias",
 			frame : 2,
-			z:1
+			z:2
 		});
 		this.add("2d");
 	}	
