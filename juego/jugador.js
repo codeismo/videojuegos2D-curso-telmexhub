@@ -65,9 +65,13 @@ Q.Sprite.extend("Jugador", {
 			sheetGrande : "jugadorGrande",
 			animacionesGrande : "animacionesMarioGrande",
 			esEnano : true, //bandera que indica si mario es enano o grande
-			invencible : false//esta propiedad es para cuando mario come un hongo o se hace enano
+			invencible : false,//esta propiedad es para cuando mario come un hongo o se hace enano
+			saltoEnano : "salto_enano.mp3",
+			saltoGrande : "salto_grande.mp3"
 		});
 		this.add("2d, platformerControls, animation, tween");
+		
+		this.p.cancionSaltar = this.p.saltoEnano;
 
 		this.on("hit", function(colision) {
 			//si mario comio un hongo para crecer
@@ -220,6 +224,7 @@ Q.Sprite.extend("Jugador", {
 		//hacemos al jugador temporalmente invencible
 		this.p.invencible = true;
 		this.p.sensor = true;
+		this.p.cancionSaltar = this.p.saltoEnano;
 		
 		Q.audio.play("mario_decrece.mp3");
 
@@ -251,6 +256,8 @@ Q.Sprite.extend("Jugador", {
 		this.p.invencible = true;
 		this.sheet(this.p.sheetGrande, true);
 		this.p.sensor = true;
+		
+		this.p.cancionSaltar = this.p.saltoGrande;
 		
 		//Q.audio.play("mario_crece.mp3");		
 
@@ -322,7 +329,7 @@ Q.Sprite.extend("Jugador", {
 			}
 			//ejecutar la animacion saltar
 			if (this.p.vy < 0) {
-				Q.audio.play("salto_enano.mp3", {
+				Q.audio.play(this.p.cancionSaltar, {
 					debounce : 1000
 				});
 				this.play("saltar");
